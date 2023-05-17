@@ -242,8 +242,6 @@ Input:
         LEA DX,MSG
         MOV AH,9
         INT 21H    
-        
-    EXIT:
     
     MOV AH,4CH
     INT 21H
