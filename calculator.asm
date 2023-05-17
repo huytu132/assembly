@@ -353,7 +353,7 @@ MAIN ENDP
         push dx
          
         cmp ax, 0   ;   neu ax > 0 tuc la khong phai so am ta doi ra day
-        jge doiRaDay
+        jge inRaDay
         push ax
         mov dl, '-'
         mov ah, 2
@@ -361,7 +361,7 @@ MAIN ENDP
         pop ax
         neg ax  ; ax = -ax
          
-        doiRaDay:
+        inRaDay:
             mov cx, 0  ; gan cx = 0
             mov bx, 10  ; so chia la 10
             chia:
