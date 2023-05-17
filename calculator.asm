@@ -2,17 +2,18 @@
 .STACK 100H
 .DATA      
 
-CLRF DB 13, 10,'$'
-MSG1 DB 'For Add(+) type   :'1'$'
-MSG2 DB 10,13,'For Sub(-) type   :'2'$'
-MSG3 DB 10,13,'For Mul(*) type   :'3'$'
-MSG4 DB 10,13,'For Div(/) type   :'4'$'
-MSG5 DB 10,13,'Choose Any One:$'
-MSG6 DB 10,13,10,13,'Enter 1st Number:$'
-MSG7 DB 10,13,'Enter 2nd Number:$'
-MSG8 DB 10,13,10,13,'The Result is: $' 
-MSG9 DB 10,13, 'Wrong input. Choose again 1 -> 4$'
-MSG DB 10,13,10,13,'               ***THANK YOU FOR USING MY APP***$'                           
+CLRF  DB 13, 10,'$'
+MSG1  DB 'For Add(+) type   :'1'$'
+MSG2  DB 10,13,'For Sub(-) type   :'2'$'
+MSG3  DB 10,13,'For Mul(*) type   :'3'$'
+MSG4  DB 10,13,'For Div(/) type   :'4'$'
+MSG5  DB 10,13,'Choose Any One:$'
+MSG6  DB 10,13,10,13,'Enter 1st Number:$'
+MSG7  DB 10,13,'Enter 2nd Number:$'
+MSG8  DB 10,13,10,13,'The Result is: $' 
+MSG9  DB 10,13, 'Wrong input. Choose again 1 -> 4$'
+MSG   DB 10,13,10,13,'               ***THANK YOU FOR USING MY APP***$'
+ten   DB '               *********Mini Calculator********$'                           
 
 .CODE   
 
@@ -21,9 +22,17 @@ MSG DB 10,13,10,13,'               ***THANK YOU FOR USING MY APP***$'
 MAIN PROC
     
     MOV AX,@DATA
-    MOV DS,AX
+    MOV DS,AX 
+    
+    MOV AH,9
+    LEA DX,ten
+    INT 21H
+    
+    call nextLine
+    call nextLine
+    
 Input:
-
+    
 ;   In thong bao chon phep tinh cong    
     LEA DX,MSG1
     MOV AH,9
@@ -353,7 +362,7 @@ MAIN ENDP
         push dx
          
         cmp ax, 0   ;   neu ax > 0 tuc la khong phai so am ta doi ra day
-        jge inRaDay
+        jge doiRaDay
         push ax
         mov dl, '-'
         mov ah, 2
@@ -361,7 +370,7 @@ MAIN ENDP
         pop ax
         neg ax  ; ax = -ax
          
-        inRaDay:
+        doiRaDay:
             mov cx, 0  ; gan cx = 0
             mov bx, 10  ; so chia la 10
             chia:
