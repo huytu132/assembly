@@ -353,7 +353,3 @@ MAIN ENDP
         RET
          
     outputDec ENDP
-
-; su khac biet giua 2 cau lenh and ax, 000fh va or dl,30h mac du chung deu co muc dich la chuyen ki tu thanh so
-; la and ax, 000fh se xoa tat ca cac bit dau chi giu lai 4 bit cuoi trong he nhi phan, con cau lenh kia chuyen doi gia tri thanh
-;ki tu so trong  bang ma ascii de in ra
