@@ -244,8 +244,9 @@ MAIN ENDP
 
 
 ;    ---------Chuong trinh con-------------  
-  
-    tong PROC          ; CTC con tinh tong 2 so
+
+; Chuong trinh con tinh tong 2 so  
+    tong PROC          
         ADD AX, BX
         RET
     tong ENDP
@@ -267,7 +268,7 @@ MAIN ENDP
 
 ; Chuong trinh con tinh thuong    
     thuong PROC 
-         DIV BL
+         DIV BX
          RET
     thuong ENDP 
 
@@ -324,7 +325,7 @@ MAIN ENDP
     outputDec PROC 
          
         CMP AX, 0   ;   neu ax >= 0 tuc la khong phai so am ta doi ra day
-        JGE doiRaDay
+        JGE inRaDay
         PUSH AX
         MOV DL, '-'
         MOV AH, 2
@@ -332,7 +333,7 @@ MAIN ENDP
         POP AX
         NEG AX  ; ax = -ax
          
-        doiRaDay:
+        inRaDay:
             MOV CX, 0  ; gan cx = 0
             MOV BX, 10  ; so chia la 10
             chia:
