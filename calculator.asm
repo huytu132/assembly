@@ -242,6 +242,8 @@ Input:
         LEA DX,MSG
         MOV AH,9
         INT 21H    
+        
+    EXIT:
     
     MOV AH,4CH
     INT 21H
@@ -287,10 +289,6 @@ MAIN ENDP
 
 ; Chuong trinh con nhap dau vao he 10     
     inputDec proc
-        ; luu cac gia tri ban dau trong cac thanh ghi vao stack
-        push bx
-        push cx
-        push dx 
          
         batDau:
             mov bx, 0 ; bien tinh tong
@@ -335,11 +333,6 @@ MAIN ENDP
                 neg ax              ; neu la so am thi doi ax ra so am
                  
             ra: 
-            ;tra lai gia tri ban dau cho cac thanh ghi
-                pop dx
-                pop cx
-                pop bx  
-                 
                 ret
                  
             khongPhaiSo:
@@ -355,9 +348,6 @@ MAIN ENDP
      
     outputDec proc 
        ; dua vao stack de khong lam thay doi gia tri cua thanh ghi
-        push bx
-        push cx
-        push dx
          
         cmp ax, 0   ;   neu ax > 0 tuc la khong phai so am ta doi ra day
         jge doiRaDay
@@ -391,10 +381,6 @@ MAIN ENDP
                 
                 ; vi gia tri cac thanh ghi ban dau duoc dua vao stack 
                 ;nen khi thuc hien xong co the lay tu stack va tra lai gia tri ban dau cua cac thanh ghi 
-                pop dx
-                pop cx
-                pop bx
-                ;pop ax
         ret
          
     outputDec endp
