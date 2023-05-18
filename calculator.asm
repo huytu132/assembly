@@ -290,15 +290,10 @@ MAIN ENDP
             INT 21H
             CMP AL, '-'
             JE dauTru
-            CMP AL, '+'
-            JE dauCong
             JMP tiepTuc
              
             dauTru:
                 MOV CX, 1
-             
-            dauCong:
-                INT 21H
              
             tiepTuc:
                 CMP AL, '0'
