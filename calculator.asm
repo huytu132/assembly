@@ -296,10 +296,6 @@ MAIN ENDP
                 MOV CX, 1
              
             tiepTuc:
-                CMP AL, '0'
-                JNGE khongPhaiSo    ; khong lop hon hoac bang
-                CMP AL, '9'
-                JNLE khongPhaiSo    ; Khong nho hon hoac bang
                 AND AX, 000fh      ; doi thanh chu so, giai thich f sang nhi phan 1111, vd ki tu '1' trong 
                                    ; thanh ghi al co ma hex la 0x31 co ma o cuoi(1) chuyen sang nhi phan la 0001, sau cau lenh and thanh ghi al chua ma 0001 nen ki tu '1' duoc chuyen thanh so
                 PUSH AX             ; luu gia tri vua nhap vao ngan xep
@@ -322,15 +318,6 @@ MAIN ENDP
                  
             ra: 
                 RET
-                 
-            khongPhaiSo:
-                MOV AH, 2
-                MOV DL, 0dh
-                INT 21H
-                MOV DL, 0ah
-                INT 21H
-                JMP batDau
-                 
                  
     inputDec ENDP 
      
