@@ -346,11 +346,7 @@ MAIN ENDP
                 MOV AH, 2
             hien:
                 POP DX
-                OR DL, 30H  ; chuyen tu ki tu sang so hay cong them 48 trong bang ma asci ('0' + 48 = 0)
-                            ;vd 5 nhi phan 0000 0101
-                            ;30 sang nhi phan 0011 0000
-                            ;sau cau lenh or ta dc 0011 0101 hay noi cach khac la cong them 48
-                            ;do dx la thanh ghi 16 bit va dl la thanh ghi 8 bit nen ta su dung cach nay
+                ADD DL, 30H 
                 INT 21H
                 LOOP hien
                 
@@ -359,7 +355,3 @@ MAIN ENDP
         RET
          
     outputDec ENDP
-
-; su khac biet giua 2 cau lenh and ax, 000fh va or dl,30h mac du chung deu co muc dich la chuyen ki tu thanh so
-; la and ax, 000fh se xoa tat ca cac bit dau chi giu lai 4 bit cuoi trong he nhi phan, con cau lenh kia chuyen doi gia tri thanh
-;ki tu so trong  bang ma ascii de in ra
